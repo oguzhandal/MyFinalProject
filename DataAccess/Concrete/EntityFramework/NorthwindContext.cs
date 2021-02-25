@@ -12,9 +12,9 @@ namespace DataAccess.Concrete.EntityFramework
         //Hangi veritabanına bağlanılacak
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //Hangi veritabanıyla ilişkili olduğunu belirteceğimiz yer 
             optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=Northwind;Trusted_Connection=true");
         }
+        //Hangi veritabanıyla ilişkili olduğunu belirteceğimiz yer 
         //Hangi tablo hangi class'a denk geliyor
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }

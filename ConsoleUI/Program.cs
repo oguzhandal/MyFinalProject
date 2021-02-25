@@ -5,12 +5,14 @@ namespace ConsoleUI
 {
     class Program
     {
+        //SOLID
+        //Open Closed principle
         static void Main(string[] args)
         {
             ProductManeger productManeger = new ProductManeger(new EfProductDal());
-            foreach (var item in productManeger.GetByUnitPrice(0,100))
+            foreach (var item in productManeger.GetAllByCategoryId(1))
             {
-                System.Console.WriteLine("Category id: " + item.CategoryId + "-----" + "Product Name: " + item.ProductName);
+                System.Console.WriteLine("Category id: " + item.CategoryId + "-----" + "Category Name: " + item.ProductName);
             }
         }
     }

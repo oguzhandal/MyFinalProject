@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace DataAccess.Abstract
 {
-    //Generic constrain
+    //Generic constraint
     //class: Referans tip
     //IEntity : IEntity olabilir veya IEntity implemente eden bir nesne olabilir    
     //new() : new'lenebilir olmalıdır.
