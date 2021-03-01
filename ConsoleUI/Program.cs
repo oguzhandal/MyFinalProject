@@ -1,5 +1,6 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
+using System;
 
 namespace ConsoleUI
 {
@@ -9,10 +10,26 @@ namespace ConsoleUI
         //Open Closed principle
         static void Main(string[] args)
         {
-            ProductManeger productManeger = new ProductManeger(new EfProductDal());
-            foreach (var item in productManeger.GetAllByCategoryId(1))
+            ProductTest();
+            //CategoryTest();
+
+        }
+
+        private static void CategoryTest()
+        {
+            CategoryManeger categoryManeger = new CategoryManeger(new EfCategoryDal());
+            foreach (var category in categoryManeger.GetAll())
             {
-                System.Console.WriteLine("Category id: " + item.CategoryId + "-----" + "Category Name: " + item.ProductName);
+                System.Console.WriteLine(category.CategoryName);
+            }
+        }
+
+        private static void ProductTest()
+        {
+            ProductManeger productManeger = new ProductManeger(new EfProductDal());
+            foreach (var item in productManeger.GetProductDetails())
+            {
+                Console.WriteLine(item.CategoryName + " /" + item.ProductName);
             }
         }
     }
