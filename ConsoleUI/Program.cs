@@ -18,7 +18,7 @@ namespace ConsoleUI
         private static void CategoryTest()
         {
             CategoryManeger categoryManeger = new CategoryManeger(new EfCategoryDal());
-            foreach (var category in categoryManeger.GetAll())
+            foreach (var category in categoryManeger.GetAll().Data)
             {
                 System.Console.WriteLine(category.CategoryName);
             }
@@ -26,9 +26,11 @@ namespace ConsoleUI
 
         private static void ProductTest()
         {
-            ProductManeger productManeger = new ProductManeger(new EfProductDal());
+            ProductManeger productManeger = new ProductManeger(new EfProductDal(),
+                new CategoryManeger(new EfCategoryDal()));
+
             var result = productManeger.GetProductDetails();
-            if (result.Success==true)
+            if (result.Success == true)
             {
                 foreach (var item in productManeger.GetProductDetails().Data)
                 {
@@ -39,7 +41,7 @@ namespace ConsoleUI
             {
                 Console.WriteLine(result.Message);
             }
-            
+
         }
     }
 }
