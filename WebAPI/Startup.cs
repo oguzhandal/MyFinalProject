@@ -32,6 +32,8 @@ namespace WebAPI
             //Autofac, Ninject, CastleWindsor, StructureMap, LightInject, DryInject -->IoC Container oluþtururlar. 
             //services.AddSingleton<IProductService, ProductManeger>();
             //services.AddSingleton<IProductDal, EfProductDal>();
+            services.AddCors();
+
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -61,6 +63,8 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            //http://localhost:4200/ adresten hangi istek gelirse gelsin izin ver adrese güvendiðimizi belli ediyoruz
+            app.UseCors(builder=>builder.WithOrigins("http://localhost:4200").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
